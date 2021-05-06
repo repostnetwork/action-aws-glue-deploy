@@ -1,14 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.27"
-    }
-  }
-
-  required_version = ">= 0.14.9"
-}
-
 locals {
   glue_script_key = "admin/${var.glue_job_name}.py"
 }
@@ -28,7 +17,6 @@ resource "aws_glue_job" "glue_job" {
   }
 
   glue_version = "2.0"
-  depends_on   = [aws_s3_bucket_object.glue_script]
 }
 
 resource "aws_glue_trigger" "glue_trigger" {
@@ -37,6 +25,6 @@ resource "aws_glue_trigger" "glue_trigger" {
   type     = "SCHEDULED"
 
   actions {
-    job_name = aws_glue_job.glue_job.name
+    job_name = "${aws_glue_job.glue_job.name}"
   }
 }
