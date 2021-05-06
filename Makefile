@@ -7,6 +7,11 @@ GLUE_SCRIPT_BUCKET := ${GLUE_SCRIPT_BUCKET}
 GLUE_SCRIPT_LOCAL_PATH := ${GLUE_SCRIPT_LOCAL_PATH}
 GLUE_JOB_NAME := ${GLUE_JOB_NAME}
 GLUE_JOB_ROLE_ARN := ${GLUE_JOB_ROLE_ARN}
+
+ifndef TERRAFORM_BUCKET
+    TERRAFORM_BUCKET := repost-terraform-${ENV}
+endif
+
 TERRAFORM_FLAGS :=
 AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "env=$(ENV)" \
@@ -28,6 +33,7 @@ aws-init:
 	@:$(call check_defined, GLUE_JOB_ROLE_ARN, ARN of IAM role to run Glue job)
 	@cd $(AWS_DIR) && terraform init \
 		-backend-config "bucket=$(TERRAFORM_BUCKET)" \
+		-backend-config "key=$(GLUE_JOB_NAME)" \
 		-backend-config "region=$(AWS_REGION)" \
 		$(AWS_TERRAFORM_FLAGS)
 
