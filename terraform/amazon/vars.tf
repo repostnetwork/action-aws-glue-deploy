@@ -25,7 +25,7 @@ variable "glue_job_role_arn" {
 provider "aws" {
   version = ">= 1.47.0"
   profile = "default"
-  region = var.region
+  region = "${var.region}"
 }
 
 terraform {

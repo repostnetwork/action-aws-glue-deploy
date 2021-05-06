@@ -14,14 +14,14 @@ locals {
 }
 
 resource "aws_s3_bucket_object" "glue_script" {
-  bucket = var.glue_script_bucket
-  key    = local.glue_script_key
+  bucket = "${var.glue_script_bucket}"
+  key    = "${local.glue_script_key}"
   source = "/github/workspace/${var.glue_script_local_path}"
 }
 
 resource "aws_glue_job" "glue_job" {
-  name     = var.glue_job_name
-  role_arn = var.glue_job_role_arn
+  name     = "${var.glue_job_name}"
+  role_arn = "${var.glue_job_role_arn}"
 
   command {
     script_location = "s3://${var.glue_script_bucket}/${local.glue_script_key}"
