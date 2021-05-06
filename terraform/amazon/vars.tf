@@ -25,12 +25,12 @@ variable "glue_job_role_arn" {
 provider "aws" {
   version = ">= 1.47.0"
   profile = "default"
-  region = "${var.region}"
+  region  = "${var.region}"
 }
 
 terraform {
   backend "s3" {
     encrypt = true
-    region = "us-east-1"
+    region  = "us-east-1"
   }
 }
