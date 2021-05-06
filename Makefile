@@ -20,7 +20,7 @@ AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "glue_script_bucket=$(GLUE_SCRIPT_BUCKET)" \
 		-var "glue_job_name=$(GLUE_JOB_NAME)" \
 		-var "glue_job_role_arn=$(GLUE_JOB_ROLE_ARN)" \
-		-var "glue_script_local_path=$(GLUE_SCRIPT_PATH)"
+		-var "glue_script_local_path=$(GLUE_SCRIPT_LOCAL_PATH)"
 
 .PHONY: aws-init
 aws-init:
