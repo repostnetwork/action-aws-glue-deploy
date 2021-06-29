@@ -22,9 +22,16 @@ variable "glue_job_role_arn" {
   description = "ARN of the IAM role that should run the Glue job"
 }
 
-variable "glue_script_arguments" {
-  type        = "map"
-  description = "A map of default arguments that will be passed to the Glue job's script"
+variable "source_database_name" {
+  description = "The source database name argument that should be passed to the Glue job's script"
+}
+
+variable "source_table_name" {
+  description = "The source table name argument that should be passed to the Glue job's script"
+}
+
+variable "destination_s3_bucket" {
+  description = "The destination S3 bucket name argument that should be passed to the Glue job's script"
 }
 
 provider "aws" {

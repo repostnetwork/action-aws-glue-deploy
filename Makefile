@@ -7,7 +7,9 @@ GLUE_SCRIPT_BUCKET := ${GLUE_SCRIPT_BUCKET}
 GLUE_SCRIPT_LOCAL_PATH := ${GLUE_SCRIPT_LOCAL_PATH}
 GLUE_JOB_NAME := ${GLUE_JOB_NAME}
 GLUE_JOB_ROLE_ARN := ${GLUE_JOB_ROLE_ARN}
-GLUE_SCRIPT_ARGS_LOCAL_PATH := ${GLUE_SCRIPT_ARGS_LOCAL_PATH}
+SOURCE_DATABASE_NAME := ${SOURCE_DATABASE_NAME}
+SOURCE_TABLE_NAME := ${SOURCE_TABLE_NAME}
+DESTINATION_S3_BUCKET := ${DESTINATION_S3_BUCKET}
 
 ifndef TERRAFORM_BUCKET
     TERRAFORM_BUCKET := repost-terraform-${ENV}
@@ -22,7 +24,9 @@ AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "glue_job_name=$(GLUE_JOB_NAME)" \
 		-var "glue_job_role_arn=$(GLUE_JOB_ROLE_ARN)" \
 		-var "glue_script_local_path=$(GLUE_SCRIPT_LOCAL_PATH)" \
-		-var-file="$(GLUE_SCRIPT_ARGS_LOCAL_PATH)"
+		-var "source_database_name=$(SOURCE_DATABASE_NAME)" \
+		-var "source_table_name=$(SOURCE_TABLE_NAME)" \
+		-var "destination_s3_bucket=$(DESTINATION_S3_BUCKET)"
 
 .PHONY: aws-init
 aws-init:
