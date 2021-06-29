@@ -9,9 +9,9 @@ resource "aws_s3_bucket_object" "glue_script" {
 }
 
 resource "aws_glue_job" "glue_job" {
-  name                      = "${var.glue_job_name}"
-  role_arn                  = "${var.glue_job_role_arn}"
-  non_overridable_arguments = "${var.glue_script_arguments}"
+  name              = "${var.glue_job_name}"
+  role_arn          = "${var.glue_job_role_arn}"
+  default_arguments = "${var.glue_script_arguments}"
 
   command {
     script_location = "s3://${var.glue_script_bucket}/${local.glue_script_key}"
