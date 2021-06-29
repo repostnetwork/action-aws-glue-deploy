@@ -22,6 +22,10 @@ variable "glue_job_role_arn" {
   description = "ARN of the IAM role that should run the Glue job"
 }
 
+variable "glue_script_arguments" {
+  description = "A map of default arguments that will be passed to the Glue job's script"
+}
+
 provider "aws" {
   version = ">= 1.47.0"
   profile = "default"
