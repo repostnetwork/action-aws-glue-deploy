@@ -23,6 +23,7 @@ variable "glue_job_role_arn" {
 }
 
 variable "glue_script_arguments" {
+  type        = "map"
   description = "A map of default arguments that will be passed to the Glue job's script"
 }
 
