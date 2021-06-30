@@ -11,10 +11,11 @@ resource "aws_s3_bucket_object" "glue_script" {
 resource "aws_glue_job" "glue_job" {
   name              = "${var.glue_job_name}"
   role_arn          = "${var.glue_job_role_arn}"
+  
   default_arguments = {
-    --source_database_name: "${var.source_database_name}",
-    --source_table_name: "${var.source_table_name}",
-    --destination_s3_bucket: "${var.destination_s3_bucket}"
+    "--source_database_name"   = "${var.source_database_name}"
+    "--source_table_name"      = "${var.source_table_name}"
+    "--destination_s3_bucket"  = "${var.destination_s3_bucket}"
   }
 
   command {
