@@ -6,6 +6,7 @@ resource "aws_s3_bucket_object" "glue_script" {
   bucket = "${var.glue_script_bucket}"
   key    = "${local.glue_script_key}"
   source = "/github/workspace/${var.glue_script_local_path}"
+  etag   = "${filemd5("/github/workspace/${var.glue_script_local_path}")}"
 }
 
 resource "aws_glue_job" "glue_job" {
