@@ -30,6 +30,10 @@ variable "source_table_name" {
   description = "The source table name argument that should be passed to the Glue job's script"
 }
 
+variable "source_user" {
+  description = "The source database user argument that should be passed to the Glue job's script"
+}
+
 variable "destination_s3_bucket" {
   description = "The destination S3 bucket name argument that should be passed to the Glue job's script"
 }
