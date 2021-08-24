@@ -16,6 +16,7 @@ resource "aws_glue_job" "glue_job" {
   default_arguments = {
     "--source_database_name"   = "${var.source_database_name}"
     "--source_table_name"      = "${var.source_table_name}"
+    "--source_user"            = "${var.source_user}"
     "--destination_s3_bucket"  = "${var.destination_s3_bucket}"
   }
 
