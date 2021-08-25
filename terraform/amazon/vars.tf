@@ -38,6 +38,10 @@ variable "destination_s3_bucket" {
   description = "The destination S3 bucket name argument that should be passed to the Glue job's script"
 }
 
+variable "glue_connection" {
+  description = "The Glue connection required for this job, if applicable"
+}
+
 provider "aws" {
   version = ">= 1.47.0"
   profile = "default"
