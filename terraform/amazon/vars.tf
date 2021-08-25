@@ -40,7 +40,6 @@ variable "destination_s3_bucket" {
 
 variable "glue_connection" {
   description = "The Glue connection required for this job, if applicable"
-  default = null
 }
 
 provider "aws" {
