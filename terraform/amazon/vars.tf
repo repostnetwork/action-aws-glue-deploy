@@ -40,6 +40,7 @@ variable "destination_s3_bucket" {
 
 variable "glue_connection" {
   description = "The Glue connection required for this job, if applicable"
+  default = null
 }
 
 provider "aws" {
@@ -53,4 +54,5 @@ terraform {
     encrypt = true
     region  = "us-east-1"
   }
+  required_version="= 0.12.0"
 }

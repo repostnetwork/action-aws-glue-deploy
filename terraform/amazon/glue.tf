@@ -37,3 +37,5 @@ resource "aws_glue_trigger" "glue_trigger" {
     job_name = "${aws_glue_job.glue_job.name}"
   }
 }
+
+
