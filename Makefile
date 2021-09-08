@@ -10,7 +10,7 @@ GLUE_JOB_ROLE_ARN := ${GLUE_JOB_ROLE_ARN}
 SOURCE_DATABASE_NAME := ${SOURCE_DATABASE_NAME}
 SOURCE_TABLE_NAME := ${SOURCE_TABLE_NAME}
 SOURCE_USER := ${SOURCE_USER}
-GLUE_CONNECTION := ${GLUE_CONNECTION}
+GLUE_CONNECTIONS := ${GLUE_CONNECTIONS}
 DESTINATION_S3_BUCKET := ${DESTINATION_S3_BUCKET}
 
 ifndef TERRAFORM_BUCKET
@@ -28,7 +28,7 @@ AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "source_database_name=$(SOURCE_DATABASE_NAME)" \
 		-var "source_table_name=$(SOURCE_TABLE_NAME)" \
 		-var "source_user=$(SOURCE_USER)" \
-		-var "glue_connection=$(GLUE_CONNECTION)" \
+		-var "glue_connections=$(GLUE_CONNECTIONS)" \
 		-var "destination_s3_bucket=$(DESTINATION_S3_BUCKET)"
 
 .PHONY: aws-init
