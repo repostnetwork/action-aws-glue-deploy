@@ -46,7 +46,7 @@ variable "glue_connection" {
 provider "aws" {
   version = ">= 1.47.0"
   profile = "default"
-  region  = "${var.region}"
+  region  = var.region
 }
 
 terraform {
@@ -54,5 +54,4 @@ terraform {
     encrypt = true
     region  = "us-east-1"
   }
-  required_version="= 0.12.0"
 }
