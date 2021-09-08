@@ -20,7 +20,6 @@ endif
 TERRAFORM_FLAGS :=
 AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "env=$(ENV)" \
-		-var "script_key=$()" \
 		-var "bucket=$(TERRAFORM_BUCKET)" \
 		-var "glue_script_bucket=$(GLUE_SCRIPT_BUCKET)" \
 		-var "glue_job_name=$(GLUE_JOB_NAME)" \

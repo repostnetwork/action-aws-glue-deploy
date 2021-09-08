@@ -6,6 +6,10 @@ variable "env" {
   description = "Either 'staging' or 'production'"
 }
 
+variable "bucket" {
+  description = "The s3 bucket to be used for terraform state"
+}
+
 variable "glue_script_bucket" {
   description = "The bucket where the Glue job's script will be stored"
 }
