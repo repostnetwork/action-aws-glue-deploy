@@ -9,7 +9,8 @@ resource "aws_s3_bucket_object" "glue_script" {
   etag   = filemd5("/github/workspace/${var.glue_script_local_path}")
 }
 
-resource "aws_glue_job" "glue_job" {
+resource "aws_glue_job" "glue_job_with_connection" {
+  count    = var.connection_required
   name     = var.glue_job_name
   role_arn = var.glue_job_role_arn
 
@@ -28,13 +29,32 @@ resource "aws_glue_job" "glue_job" {
   glue_version = "2.0"
 }
 
+resource "aws_glue_job" "glue_job" {
+  count    = var.connection_required
+  name     = var.glue_job_name
+  role_arn = var.glue_job_role_arn
+
+  default_arguments = {
+    "--source_database_name"  = var.source_database_name
+    "--source_table_name"     = var.source_table_name
+    "--source_user"           = var.source_user
+    "--destination_s3_bucket" = var.destination_s3_bucket
+  }
+
+  command {
+    script_location = "s3://${var.glue_script_bucket}/${local.glue_script_key}"
+  }
+
+  glue_version = "2.0"
+}
+
 resource "aws_glue_trigger" "glue_trigger" {
   name     = "${var.glue_job_name}_daily"
   schedule = "cron(0 0 * * ? *)"
   type     = "SCHEDULED"
 
   actions {
-    job_name = aws_glue_job.glue_job.name
+    job_name = var.glue_job_name
   }
 }
 
