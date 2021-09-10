@@ -47,8 +47,8 @@ variable "glue_connection" {
 }
 
 variable "connection_required" {
-  description = "'1' if a connection is required for this job, '0' otherwise"
-  default = 0
+  description = "'true' if a connection is required for this job, 'false' otherwise"
+  default = false
 }
 
 provider "aws" {
