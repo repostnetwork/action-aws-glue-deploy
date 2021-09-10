@@ -10,7 +10,7 @@ resource "aws_s3_bucket_object" "glue_script" {
 }
 
 resource "aws_glue_job" "glue_job_with_connection" {
-  count    = var.connection_required
+  count    = tonumber(var.connection_required)
   name     = var.glue_job_name
   role_arn = var.glue_job_role_arn
 
@@ -30,7 +30,7 @@ resource "aws_glue_job" "glue_job_with_connection" {
 }
 
 resource "aws_glue_job" "glue_job" {
-  count    = var.connection_required
+  count    = tonumber(var.connection_required)
   name     = var.glue_job_name
   role_arn = var.glue_job_role_arn
 
