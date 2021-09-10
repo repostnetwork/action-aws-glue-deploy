@@ -46,6 +46,11 @@ variable "glue_connection" {
   description = "The Glue connection required for this job, if applicable"
 }
 
+variable "connection_required" {
+  description = "'1' if a connection is required for this job, '0' otherwise"
+  default = 0
+}
+
 provider "aws" {
   version = ">= 1.47.0"
   profile = "default"
