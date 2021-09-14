@@ -7,7 +7,7 @@ GLUE_SCRIPT_BUCKET := ${GLUE_SCRIPT_BUCKET}
 GLUE_SCRIPT_LOCAL_PATH := ${GLUE_SCRIPT_LOCAL_PATH}
 GLUE_JOB_NAME := ${GLUE_JOB_NAME}
 GLUE_JOB_ROLE_ARN := ${GLUE_JOB_ROLE_ARN}
-SOURCE_DATABASE_NAME := ${SOURCE_DATABASE_NAME}
+SOURCE_DATABASE_URI := ${SOURCE_DATABASE_URI}
 SOURCE_TABLE_NAME := ${SOURCE_TABLE_NAME}
 SOURCE_USER := ${SOURCE_USER}
 GLUE_CONNECTION := ${GLUE_CONNECTION}
@@ -26,7 +26,7 @@ AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "glue_job_name=$(GLUE_JOB_NAME)" \
 		-var "glue_job_role_arn=$(GLUE_JOB_ROLE_ARN)" \
 		-var "glue_script_local_path=$(GLUE_SCRIPT_LOCAL_PATH)" \
-		-var "source_database_name=$(SOURCE_DATABASE_NAME)" \
+		-var "source_database_uri=$(SOURCE_DATABASE_URI)" \
 		-var "source_table_name=$(SOURCE_TABLE_NAME)" \
 		-var "source_user=$(SOURCE_USER)" \
 		-var "glue_connection=$(GLUE_CONNECTION)" \

@@ -26,8 +26,8 @@ variable "glue_job_role_arn" {
   description = "ARN of the IAM role that should run the Glue job"
 }
 
-variable "source_database_name" {
-  description = "The source database name argument that should be passed to the Glue job's script"
+variable "source_database_uri" {
+  description = "The source database URI argument that should be passed to the Glue job's script"
 }
 
 variable "source_table_name" {
