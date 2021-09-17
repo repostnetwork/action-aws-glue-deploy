@@ -18,6 +18,7 @@ resource "aws_glue_job" "glue_job_with_connection" {
     "--source_database_uri"   = var.source_database_uri
     "--source_table_name"     = var.source_table_name
     "--source_user"           = var.source_user
+    "--source_password"       = var.source_password
     "--destination_s3_bucket" = var.destination_s3_bucket
   }
   connections = [var.glue_connection]
@@ -38,6 +39,7 @@ resource "aws_glue_job" "glue_job" {
     "--source_database_uri"  = var.source_database_uri
     "--source_table_name"     = var.source_table_name
     "--source_user"           = var.source_user
+    "--source_password"       = var.source_password
     "--destination_s3_bucket" = var.destination_s3_bucket
   }
 
