@@ -10,6 +10,7 @@ GLUE_JOB_ROLE_ARN := ${GLUE_JOB_ROLE_ARN}
 SOURCE_DATABASE_URI := ${SOURCE_DATABASE_URI}
 SOURCE_TABLE_NAME := ${SOURCE_TABLE_NAME}
 SOURCE_USER := ${SOURCE_USER}
+SOURCE_PASSWORD := ${SOURCE_PASSWORD}
 GLUE_CONNECTION := ${GLUE_CONNECTION}
 CONNECTION_REQUIRED := ${CONNECTION_REQUIRED}
 DESTINATION_S3_BUCKET := ${DESTINATION_S3_BUCKET}
@@ -29,6 +30,7 @@ AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "source_database_uri=$(SOURCE_DATABASE_URI)" \
 		-var "source_table_name=$(SOURCE_TABLE_NAME)" \
 		-var "source_user=$(SOURCE_USER)" \
+		-var "source_password=$(SOURCE_PASSWORD)" \
 		-var "glue_connection=$(GLUE_CONNECTION)" \
 		-var "connection_required=$(CONNECTION_REQUIRED)" \
 		-var "destination_s3_bucket=$(DESTINATION_S3_BUCKET)"
