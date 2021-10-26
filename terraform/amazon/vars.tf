@@ -55,6 +55,61 @@ variable "connection_required" {
   default = false
 }
 
+/*
+resource "aws_glue_catalog_database" "aws_glue_catalog_database" {
+  count = tobool(var.crawler_required) ? 0 : 1
+  name = var.glue_catalog_database_name
+}
+
+resource "aws_crawler" "crawler" {
+  count = tobool(var.crawler_required) ? 0 : 1
+  schedule = "cron(0 1 * * ? *)"
+  name = var.crawler_name #repost-staging-market-analytics-crawler
+  role_arn = var.crawler_role_arn
+  s3_target = {
+    path = "s3://${var.crawler_source_s3_bucket}/${var.crawler_source_s3_path}/"
+  }
+}
+*/
+
+variable "crawler_required" {
+  description = "'true' if a crawler is required for this job, 'false' otherwise"
+  default = false
+}
+
+variable "crawler_name" {
+  description = "Name of the crawler"
+  default = ""
+}
+
+variable "crawler_schedule" {
+  description = "Name "
+  default = ""
+}
+
+variable "crawler_role_arn" {
+  description = ""
+  default = ""
+}
+
+variable "crawler_source_s3_bucket" {
+  description = ""
+  default = ""
+}
+
+variable "crawler_source_s3_path" {
+  description = ""
+  default = ""
+}
+
+
+variable "glue_catalog_database_name" {
+  description = "If a crawler is required - the name of the catalog"
+  default = ""
+}
+
+
+
 provider "aws" {
   version = ">= 1.47.0"
   profile = "default"

@@ -30,6 +30,21 @@ resource "aws_glue_job" "glue_job_with_connection" {
   glue_version = "2.0"
 }
 
+resource "aws_glue_catalog_database" "aws_glue_catalog_database" {
+  count = tobool(var.crawler_required) ? 0 : 1
+  name = var.source_table_name
+}
+
+resource "aws_crawler" "crawler" {
+  count = tobool(var.crawler_required) ? 0 : 1
+  schedule = var.crawler_schedule
+  name = var.crawler_name #repost-staging-market-analytics-spotify-crawler
+  role_arn = var.crawler_role_arn
+  s3_target = {
+    path = "s3://${var.crawler_source_s3_bucket}/${var.crawler_source_s3_path}/"
+  }
+}
+
 resource "aws_glue_job" "glue_job" {
   count    = tobool(var.connection_required) ? 0 : 1
   name     = var.glue_job_name
