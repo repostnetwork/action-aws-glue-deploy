@@ -21,6 +21,7 @@ resource "aws_glue_job" "glue_job_with_connection" {
     "--source_user"           = var.source_user
     "--source_password"       = var.source_password
     "--destination_s3_bucket" = var.destination_s3_bucket
+    "--glue_catalog_database_name"  = var.glue_catalog_database_name
     "--job-bookmark-option"   = var.job_bookmark_option
   }
   connections = [var.glue_connection]
