@@ -40,9 +40,9 @@ resource "aws_glue_catalog_database" "glue_catalog_database" {
 resource "aws_glue_crawler" "glue_crawler" {
   count = tobool(var.crawler_required) ? 1 : 0
   schedule = var.crawler_schedule
-  name = "repost-${var.env}-${var.source_database_uri}-${var.source_table_name}-crawler"
+  name = "repost-${var.env}-${var.glue_catalog_database_name}-${var.source_table_name}-crawler"
   role = var.glue_job_role_arn
-  database_name = var.source_database_uri
+  database_name = var.glue_catalog_database_name
   s3_target {
     path = "s3://${trimspace(var.crawler_source_s3_bucket)}/${trimspace(var.crawler_source_s3_path)}/"
   }
@@ -54,12 +54,13 @@ resource "aws_glue_job" "glue_job" {
   role_arn = var.glue_job_role_arn
 
   default_arguments = {
-    "--source_database_uri"  = var.source_database_uri
-    "--source_table_name"     = var.source_table_name
-    "--source_user"           = var.source_user
-    "--source_password"       = var.source_password
-    "--destination_s3_bucket" = var.destination_s3_bucket
-    "--job-bookmark-option"   = var.job_bookmark_option
+    "--source_database_uri"         = var.source_database_uri
+    "--source_table_name"           = var.source_table_name
+    "--source_user"                 = var.source_user
+    "--source_password"             = var.source_password
+    "--destination_s3_bucket"       = var.destination_s3_bucket
+    "--glue_catalog_database_name"  = var.glue_catalog_database_name
+    "--job-bookmark-option"         = var.job_bookmark_option
   }
 
   command {
