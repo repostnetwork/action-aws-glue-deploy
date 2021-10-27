@@ -62,7 +62,7 @@ variable "connection_required" {
 
 variable "crawler_required" {
   description = "'true' if a crawler is required for this job, 'false' otherwise"
-  default = false
+  default = true
 }
 
 variable "crawler_name" {
