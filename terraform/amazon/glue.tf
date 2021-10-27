@@ -33,12 +33,12 @@ resource "aws_glue_job" "glue_job_with_connection" {
 }
 
 resource "aws_glue_catalog_database" "glue_catalog_database" {
-  # count = tobool(var.crawler_required) ? 0 : 1
+  count = tobool(var.crawler_required) ? 1 : 0
   name = var.source_table_name 
 }
 
 resource "aws_glue_crawler" "glue_crawler" {
-  # count = tobool(var.crawler_required) ? 0 : 1
+  count = tobool(var.crawler_required) ? 1 : 0
   schedule = var.crawler_schedule
   name = var.crawler_name #repost-staging-market-analytics-spotify-crawler
   role = var.glue_job_role_arn
