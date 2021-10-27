@@ -95,6 +95,11 @@ variable "glue_catalog_database_name" {
   default = ""
 }
 
+variable "glue_trigger_schedule" {
+  description = "Glue Trigger Schedule"
+  default = "cron(0 0 * * ? *)"
+}
+
 
 
 provider "aws" {
