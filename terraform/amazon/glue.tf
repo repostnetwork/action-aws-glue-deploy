@@ -42,7 +42,7 @@ resource "aws_glue_crawler" "glue_crawler" {
   schedule = var.crawler_schedule
   name = "repost-${var.env}-${var.glue_catalog_database_name}-${var.source_table_name}-crawler"
   role = var.glue_job_role_arn
-  database_name = var.source_table_name
+  database_name = var.glue_catalog_database_name
   s3_target {
     path = "s3://${trimspace(var.crawler_source_s3_bucket)}/${trimspace(var.crawler_source_s3_path)}/"
   }
