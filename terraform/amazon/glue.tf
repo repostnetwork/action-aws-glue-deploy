@@ -33,14 +33,15 @@ resource "aws_glue_job" "glue_job_with_connection" {
 
 resource "aws_glue_catalog_database" "glue_catalog_database" {
   count = tobool(var.crawler_required) ? 0 : 1
-  name = var.source_table_name
+  name = var.source_table_name 
 }
 
 resource "aws_glue_crawler" "glue_crawler" {
   count = tobool(var.crawler_required) ? 0 : 1
   schedule = var.crawler_schedule
   name = var.crawler_name #repost-staging-market-analytics-spotify-crawler
-  role_arn = var.crawler_role_arn
+  role = var.crawler_role_arn
+  database_name = var.source_table_name
   s3_target = {
     path = "s3://${var.crawler_source_s3_bucket}/${var.crawler_source_s3_path}/"
   }
