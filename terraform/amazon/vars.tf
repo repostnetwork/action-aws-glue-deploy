@@ -71,22 +71,22 @@ variable "crawler_name" {
 }
 
 variable "crawler_schedule" {
-  description = "Name "
+  description = "Cron expression for when crawler should be run."
   default = ""
 }
 
 variable "crawler_role_arn" {
-  description = ""
+  description = "ARN of the IAM role that should run the Glue crawler"
   default = ""
 }
 
 variable "crawler_source_s3_bucket" {
-  description = ""
+  description = "S3 Bucket to crawl"
   default = ""
 }
 
 variable "crawler_source_s3_path" {
-  description = ""
+  description = "S3 Path to crawl"
   default = ""
 }
 
