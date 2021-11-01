@@ -46,6 +46,11 @@ variable "destination_s3_bucket" {
   description = "The destination S3 bucket name argument that should be passed to the Glue job's script"
 }
 
+variable "job_bookmark_option" {
+  description = "Job bookmark option. Can be job-bookmark-enable, job-bookmark-disable, job-bookmark-pause"
+  default = "job-bookmark-disable"
+}
+
 variable "glue_connection" {
   description = "The Glue connection required for this job, if applicable"
 }
@@ -54,6 +59,48 @@ variable "connection_required" {
   description = "'true' if a connection is required for this job, 'false' otherwise"
   default = false
 }
+
+variable "crawler_required" {
+  description = "'true' if a crawler is required for this job, 'false' otherwise"
+  default = true
+}
+
+variable "crawler_name" {
+  description = "Name of the crawler"
+  default = ""
+}
+
+variable "crawler_schedule" {
+  description = "Cron expression for when crawler should be run."
+  default = ""
+}
+
+variable "crawler_role_arn" {
+  description = "ARN of the IAM role that should run the Glue crawler"
+  default = ""
+}
+
+variable "crawler_source_s3_bucket" {
+  description = "S3 Bucket to crawl"
+  default = ""
+}
+
+variable "crawler_source_s3_path" {
+  description = "S3 Path to crawl"
+  default = ""
+}
+
+variable "glue_catalog_database_name" {
+  description = "If a crawler is required - the name of the catalog"
+  default = ""
+}
+
+variable "glue_trigger_schedule" {
+  description = "Glue Trigger Schedule"
+  default = "cron(0 0 * * ? *)"
+}
+
+
 
 provider "aws" {
   version = ">= 1.47.0"

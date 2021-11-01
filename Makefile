@@ -14,6 +14,15 @@ SOURCE_PASSWORD := ${SOURCE_PASSWORD}
 GLUE_CONNECTION := ${GLUE_CONNECTION}
 CONNECTION_REQUIRED := ${CONNECTION_REQUIRED}
 DESTINATION_S3_BUCKET := ${DESTINATION_S3_BUCKET}
+JOB_BOOKMARK_OPTION := ${JOB_BOOKMARK_OPTION}
+CRAWLER_REQUIRED := ${CRAWLER_REQUIRED}
+CRAWLER_NAME := ${CRAWLER_NAME}
+CRAWLER_SCHEDULE := ${CRAWLER_SCHEDULE}
+CRAWLER_ROLE_ARN := ${CRAWLER_ROLE_ARN}
+CRAWLER_SOURCE_S3_BUCKET := ${CRAWLER_SOURCE_S3_BUCKET} 
+CRAWLER_SOURCE_S3_PATH := ${CRAWLER_SOURCE_S3_PATH}
+GLUE_CATALOG_DATABASE_NAME := ${GLUE_CATALOG_DATABASE_NAME}
+GLUE_TRIGGER_SCHEDULE := ${GLUE_TRIGGER_SCHEDULE}
 
 ifndef TERRAFORM_BUCKET
     TERRAFORM_BUCKET := repost-terraform-${ENV}
@@ -33,7 +42,16 @@ AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "source_password=$(SOURCE_PASSWORD)" \
 		-var "glue_connection=$(GLUE_CONNECTION)" \
 		-var "connection_required=$(CONNECTION_REQUIRED)" \
-		-var "destination_s3_bucket=$(DESTINATION_S3_BUCKET)"
+		-var "destination_s3_bucket=$(DESTINATION_S3_BUCKET)" \
+		-var "job_bookmark_option=${JOB_BOOKMARK_OPTION}" \
+		-var "crawler_required=${CRAWLER_REQUIRED}"	\
+		-var "crawler_name=${CRAWLER_NAME}" \
+		-var "crawler_schedule=${CRAWLER_SCHEDULE}" \
+		-var "crawler_role_arn=${CRAWLER_ROLE_ARN}" \
+		-var "crawler_source_s3_bucket=${CRAWLER_SOURCE_S3_BUCKET}" \
+		-var "crawler_source_s3_path=${CRAWLER_SOURCE_S3_PATH}" \
+		-var "glue_catalog_database_name=${GLUE_CATALOG_DATABASE_NAME}" \
+		-var "glue_trigger_schedule"=${GLUE_TRIGGER_SCHEDULE}
 
 .PHONY: aws-init
 aws-init:
