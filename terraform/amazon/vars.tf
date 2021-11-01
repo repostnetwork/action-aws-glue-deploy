@@ -56,12 +56,12 @@ variable "glue_connection" {
 
 variable "connection_required" {
   description = "'true' if a connection is required for this job, 'false' otherwise"
-  default = false
+  default = false # Ignored - Set via Dockerfile
 }
 
 variable "crawler_required" {
   description = "'true' if a crawler is required for this job, 'false' otherwise"
-  default = false
+  default = false # Ignored - Set via Dockerfile
 }
 
 variable "crawler_name" {
