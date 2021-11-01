@@ -40,7 +40,7 @@ resource "aws_glue_catalog_database" "glue_catalog_database" {
 resource "aws_glue_crawler" "glue_crawler" {
   count = tobool(var.crawler_required) ? 1 : 0
   schedule = var.crawler_schedule
-  name = "repost-${var.env}-${var.source_database_uri}-${var.source_table_name}-crawler"
+  name = "${var.source_database_uri}-${var.source_table_name}-crawler"
   role = var.glue_job_role_arn
   database_name = var.source_database_uri
   s3_target {
