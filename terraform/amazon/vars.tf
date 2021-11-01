@@ -48,7 +48,6 @@ variable "destination_s3_bucket" {
 
 variable "job_bookmark_option" {
   description = "Job bookmark option. Can be job-bookmark-enable, job-bookmark-disable, job-bookmark-pause"
-  default = "job-bookmark-disable"
 }
 
 variable "glue_connection" {
