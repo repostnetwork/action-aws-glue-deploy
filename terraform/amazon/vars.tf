@@ -90,11 +90,6 @@ variable "crawler_source_s3_path" {
   default = ""
 }
 
-variable "glue_catalog_database_name" {
-  description = "If a crawler is required - the name of the catalog"
-  default = ""
-}
-
 variable "glue_trigger_schedule" {
   description = "Glue Trigger Schedule"
   default = "cron(0 0 * * ? *)"
