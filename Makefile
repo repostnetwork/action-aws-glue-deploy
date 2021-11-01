@@ -51,7 +51,7 @@ AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "crawler_source_s3_bucket=${CRAWLER_SOURCE_S3_BUCKET}" \
 		-var "crawler_source_s3_path=${CRAWLER_SOURCE_S3_PATH}" \
 		-var "glue_catalog_database_name=${GLUE_CATALOG_DATABASE_NAME}" \
-		-var "glue_trigger_schedule"=${GLUE_TRIGGER_SCHEDULE}
+		-var "glue_trigger_schedule=${GLUE_TRIGGER_SCHEDULE}"
 
 .PHONY: aws-init
 aws-init:
