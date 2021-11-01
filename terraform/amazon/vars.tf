@@ -62,37 +62,31 @@ variable "connection_required" {
 
 variable "crawler_required" {
   description = "'true' if a crawler is required for this job, 'false' otherwise"
-  default = true
+  default = false
 }
 
 variable "crawler_name" {
   description = "Name of the crawler"
-  default = ""
 }
 
 variable "crawler_schedule" {
   description = "Cron expression for when crawler should be run."
-  default = ""
 }
 
 variable "crawler_role_arn" {
   description = "ARN of the IAM role that should run the Glue crawler"
-  default = ""
 }
 
 variable "crawler_source_s3_bucket" {
   description = "S3 Bucket to crawl"
-  default = ""
 }
 
 variable "crawler_source_s3_path" {
   description = "S3 Path to crawl"
-  default = ""
 }
 
 variable "glue_trigger_schedule" {
   description = "Glue Trigger Schedule"
-  default = "cron(0 0 * * ? *)"
 }
 
 
