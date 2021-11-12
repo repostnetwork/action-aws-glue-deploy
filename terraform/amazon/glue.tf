@@ -33,7 +33,7 @@ resource "aws_glue_job" "glue_job_with_connection" {
 }
 
 resource "aws_glue_catalog_database" "glue_catalog_database" {
-  count = tobool(var.crawler_required) ? 1 : 0
+  count = tobool(var.catalog_creation_required) ? 1 : 0
   name = var.source_database_uri 
 }
 
