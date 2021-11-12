@@ -59,6 +59,11 @@ variable "connection_required" {
   default = false # Ignored - Set via Dockerfile
 }
 
+variable "catalog_creation_required" {
+  description = "'true' if a catalog needs to be created, 'false' otherwise"
+  default = false
+}
+
 variable "crawler_required" {
   description = "'true' if a crawler is required for this job, 'false' otherwise"
   default = false # Ignored - Set via Dockerfile
