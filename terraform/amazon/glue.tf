@@ -16,12 +16,12 @@ resource "aws_glue_job" "glue_job_with_connection" {
   role_arn = var.glue_job_role_arn
 
   default_arguments = {
+    "--job-bookmark-option"   = var.job_bookmark_option
     "--source_database_uri"   = var.source_database_uri
     "--source_table_name"     = var.source_table_name
     "--source_user"           = var.source_user
     "--source_password"       = var.source_password
     "--destination_s3_bucket" = var.destination_s3_bucket
-    "--job-bookmark-option"   = "${var.job_bookmark_option}"
   }
   connections = [var.glue_connection]
   command {
@@ -53,12 +53,12 @@ resource "aws_glue_job" "glue_job" {
   role_arn = var.glue_job_role_arn
 
   default_arguments = {
+    "--job-bookmark-option"         = var.job_bookmark_option
     "--source_database_uri"         = var.source_database_uri
     "--source_table_name"           = var.source_table_name
     "--source_user"                 = var.source_user
     "--source_password"             = var.source_password
     "--destination_s3_bucket"       = var.destination_s3_bucket
-    "--job-bookmark-option"         = "${var.job_bookmark_option}"
   }
 
   command {
