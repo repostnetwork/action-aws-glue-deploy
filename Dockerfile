@@ -11,6 +11,7 @@ ENV JOB_BOOKMARK_OPTION "job-bookmark-disable"
 ENV CRAWLER_REQUIRED "false"
 ENV CONNECTION_REQUIRED "false"
 ENV CATALOG_CREATION_REQUIRED "false"
+ENV GLUE_NUM_WORKERS "10"
 
 COPY terraform /usr/src/terraform
 COPY Makefile /usr/src
