@@ -97,6 +97,10 @@ variable "glue_num_workers" {
   description = "Number of workers for Glue Job"
 }
 
+variable "glue_worker_type" {
+  description = "Glue Worker Type: can be Standard, G.1X, G.2X"
+}
+
 
 
 provider "aws" {
