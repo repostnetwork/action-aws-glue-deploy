@@ -21,10 +21,9 @@ resource "aws_glue_job" "glue_job_with_connection" {
     "--source_user"           = var.source_user
     "--source_password"       = var.source_password
     "--destination_s3_bucket" = var.destination_s3_bucket
-    "--job-bookmark-option"   = var.job_bookmark_option
+    "--job-bookmark-option"   = "${var.job_bookmark_option}"
   }
   connections = [var.glue_connection]
-
   command {
     script_location = "s3://${var.glue_script_bucket}/${local.glue_script_key}"
   }
