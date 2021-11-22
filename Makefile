@@ -24,6 +24,7 @@ CRAWLER_SOURCE_S3_PATH := ${CRAWLER_SOURCE_S3_PATH}
 GLUE_CATALOG_DATABASE_NAME := ${GLUE_CATALOG_DATABASE_NAME}
 GLUE_TRIGGER_SCHEDULE := ${GLUE_TRIGGER_SCHEDULE}
 CATALOG_CREATION_REQUIRED := ${CATALOG_CREATION_REQUIRED}
+GLUE_NUM_WORKERS := ${GLUE_NUM_WORKERS}
 
 ifndef TERRAFORM_BUCKET
     TERRAFORM_BUCKET := repost-terraform-${ENV}
@@ -52,7 +53,8 @@ AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "crawler_source_s3_bucket=${CRAWLER_SOURCE_S3_BUCKET}" \
 		-var "crawler_source_s3_path=${CRAWLER_SOURCE_S3_PATH}" \
 		-var "glue_trigger_schedule=${GLUE_TRIGGER_SCHEDULE}" \
-		-var "catalog_creation_required"=${CATALOG_CREATION_REQUIRED}
+		-var "catalog_creation_required=${CATALOG_CREATION_REQUIRED}" \
+		-var "glue_num_workers=${GLUE_NUM_WORKERS}"
 
 .PHONY: aws-init
 aws-init:

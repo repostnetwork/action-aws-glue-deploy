@@ -23,6 +23,8 @@ resource "aws_glue_job" "glue_job_with_connection" {
     "--source_password"       = var.source_password
     "--destination_s3_bucket" = var.destination_s3_bucket
   }
+  
+  number_of_workers = var.glue_num_workers
   connections = [var.glue_connection]
   command {
     script_location = "s3://${var.glue_script_bucket}/${local.glue_script_key}"
@@ -61,6 +63,7 @@ resource "aws_glue_job" "glue_job" {
     "--destination_s3_bucket"       = var.destination_s3_bucket
   }
 
+  number_of_workers = var.glue_num_workers
   command {
     script_location = "s3://${var.glue_script_bucket}/${local.glue_script_key}"
   }

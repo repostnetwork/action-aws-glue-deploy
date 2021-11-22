@@ -93,6 +93,10 @@ variable "glue_trigger_schedule" {
   description = "Glue Trigger Schedule"
 }
 
+variable "glue_num_workers" {
+  description = "Number of workers for Glue Job"
+}
+
 
 
 provider "aws" {
