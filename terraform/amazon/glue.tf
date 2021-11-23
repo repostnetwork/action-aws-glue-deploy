@@ -33,6 +33,7 @@ resource "aws_glue_job" "glue_job" {
 
   default_arguments = {
     "--job-bookmark-option"         = var.job_bookmark_option
+    "--TempDir"                     = var.job_temp_dir
     "--source_database_uri"         = var.source_database_uri
     "--source_table_name"           = var.source_table_name
     "--source_user"                 = var.source_user
@@ -56,6 +57,7 @@ resource "aws_glue_job" "glue_job_with_connection" {
 
   default_arguments = {
     "--job-bookmark-option"   = var.job_bookmark_option
+    "--TempDir"               = var.glue_job_temp_dir
     "--source_database_uri"   = var.source_database_uri
     "--source_table_name"     = var.source_table_name
     "--source_user"           = var.source_user

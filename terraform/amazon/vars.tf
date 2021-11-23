@@ -101,6 +101,10 @@ variable "glue_worker_type" {
   description = "Glue Worker Type: can be Standard, G.1X, G.2X"
 }
 
+variable "glue_job_temp_dir" {
+  description = "Glue Job Temp Directory"
+}
+
 
 
 provider "aws" {
