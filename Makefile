@@ -58,7 +58,7 @@ AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "catalog_creation_required=${CATALOG_CREATION_REQUIRED}" \
 		-var "glue_num_workers=${GLUE_NUM_WORKERS}" \
 		-var "glue_worker_type=${GLUE_WORKER_TYPE}" \
-		-var "glue_job_temp_dir=${GLUE_JOB_TEMP_DIR}
+		-var "glue_job_temp_dir=${GLUE_JOB_TEMP_DIR}"
 
 .PHONY: aws-init
 aws-init:
