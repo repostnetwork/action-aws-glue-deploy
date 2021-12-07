@@ -8,9 +8,12 @@ LABEL "com.github.actions.color"="red"
 ENV AWS_REGION "us-east-1"
 ENV GLUE_TRIGGER_SCHEDULE "cron(0 0 * * ? *)"
 ENV JOB_BOOKMARK_OPTION "job-bookmark-disable"
+ENV GLUE_JOB_TEMPDIR ""
 ENV CRAWLER_REQUIRED "false"
 ENV CONNECTION_REQUIRED "false"
 ENV CATALOG_CREATION_REQUIRED "false"
+ENV GLUE_WORKER_TYPE "G.1X"
+ENV GLUE_NUM_WORKERS "10"
 
 COPY terraform /usr/src/terraform
 COPY Makefile /usr/src

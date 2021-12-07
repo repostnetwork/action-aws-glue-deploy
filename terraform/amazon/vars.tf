@@ -93,6 +93,18 @@ variable "glue_trigger_schedule" {
   description = "Glue Trigger Schedule"
 }
 
+variable "glue_num_workers" {
+  description = "Number of workers for Glue Job"
+}
+
+variable "glue_worker_type" {
+  description = "Glue Worker Type: can be Standard, G.1X, G.2X"
+}
+
+variable "glue_job_temp_dir" {
+  description = "Glue Job Temp Directory"
+}
+
 
 
 provider "aws" {
