@@ -109,7 +109,7 @@ variable "glue_job_temp_dir" {
 
 provider "aws" {
   version = ">= 1.47.0"
-  profile = "default"
+  profile = ""
   region  = var.region
 }
 
