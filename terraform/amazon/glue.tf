@@ -68,7 +68,7 @@ resource "aws_glue_job" "glue_job_with_connection" {
   worker_type = var.glue_worker_type
   number_of_workers = var.glue_num_workers
   
-  connections = [var.glue_connection]
+  connections = split(",", glue_connection)
   command {
     script_location = "s3://${var.glue_script_bucket}/${local.glue_script_key}"
   }
